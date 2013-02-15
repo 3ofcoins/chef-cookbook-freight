@@ -1,0 +1,23 @@
+<VirtualHost *:80>
+  ServerAdmin <%= @email %>
+  ServerName <%=  @fqdn %>
+  ServerAlias <%= @hostname %> <%= @fqdn %>
+
+  DocumentRoot <%= node['freight']['cache_folder'] %>
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory <%= node['freight']['cache_folder'] %>>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    allow from all
+  </Directory>
+
+  LogLevel warn
+  ErrorLog <%= node['freight']['apache']['error_log'] %>
+  CustomLog <%= node['freight']['apache']['access_log'] %> combined
+  ServerSignature On
+</VirtualHost>
