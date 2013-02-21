@@ -11,3 +11,11 @@ Requirements
 ============
 
 * apt
+
+
+Recipes
+=======
+
+ * `freight` -- adds Apt repository and installs Freight
+ * `freight::server` -- configures a system user with GPG key and
+   freight config + directories in /srv/freight/
